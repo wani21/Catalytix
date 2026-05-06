@@ -1,0 +1,81 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #0ea5e9; /* Sky 500 */
+  --color-primary-dark: #0284c7; /* Sky 600 */
+  --color-secondary: #a855f7; /* Purple 500 */
+  --color-background-dark: #0f172a; /* Slate 900 */
+  --color-background-darker: #020617; /* Slate 950 */
+  --color-surface: rgba(30, 41, 59, 0.7); /* Slate 800 with opacity */
+  --color-surface-hover: rgba(51, 65, 85, 0.8); /* Slate 700 with opacity */
+  
+  --color-success: #10b981; /* Emerald 500 */
+  --color-warning: #f59e0b; /* Amber 500 */
+  --color-error: #ef4444; /* Red 500 */
+  
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  
+  /* Adding some custom animations for Framer Motion or pure CSS */
+  --animate-pulse-slow: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  --animate-float: float 6s ease-in-out infinite;
+}
+
+@layer base {
+  body {
+    @apply bg-slate-950 text-slate-200 font-sans antialiased overflow-x-hidden;
+    background-image: 
+      radial-gradient(circle at 15% 50%, rgba(14, 165, 233, 0.05), transparent 25%),
+      radial-gradient(circle at 85% 30%, rgba(168, 85, 247, 0.05), transparent 25%);
+    background-attachment: fixed;
+  }
+}
+
+@layer utilities {
+  .glass-panel {
+    @apply bg-slate-900/60 backdrop-blur-md border border-slate-700/50 shadow-[0_0_15px_rgba(0,0,0,0.5)];
+  }
+  
+  .glass-panel-hover {
+    @apply hover:bg-slate-800/80 hover:border-sky-500/50 transition-all duration-300;
+  }
+  
+  .glow-text {
+    @apply text-sky-400;
+    text-shadow: 0 0 10px rgba(14, 165, 233, 0.5);
+  }
+  
+  .glow-border {
+    box-shadow: inset 0 0 0 1px rgba(14, 165, 233, 0.3), 0 0 10px rgba(14, 165, 233, 0.2);
+  }
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+/* Custom Scrollbar for dark theme */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #020617; 
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1e293b; 
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #334155; 
+}
